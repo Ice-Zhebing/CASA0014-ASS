@@ -31,14 +31,11 @@ const int num_leds = 72;
 const int payload_size = num_leds * 3;
 byte RGBpayload[payload_size];
 
-// Ultrasonic sensor pins
 const int trigPin = 2;
 const int echoPin = 3;
 
-// Light sensor
 Adafruit_VEML7700 lightSensor;
 
-// Adjustable thresholds
 const float BRIGHT_LUX = 100.0f;
 const float DARK_LUX = 50.0f;
 
@@ -52,13 +49,11 @@ int litPixels = num_leds;
 void setup() {
   Serial.begin(115200);
 
-  // Onboard status LED
   WiFiDrv::pinMode(25, OUTPUT);
   WiFiDrv::pinMode(26, OUTPUT);
   WiFiDrv::pinMode(27, OUTPUT);
   LedRed();
 
-  // Ultrasonic sensor
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
   digitalWrite(trigPin, LOW);
@@ -111,7 +106,6 @@ void setup() {
 }
 
 void loop() {
-  // Restore WiFi when needed
   if (WiFi.status() != WL_CONNECTED) {
     startWifi();
 
@@ -120,7 +114,7 @@ void loop() {
     }
   }
 
-  // Restore MQTT when needed
+
   if (!mqttClient.connected()) {
     reconnectMQTT();
 
@@ -131,7 +125,6 @@ void loop() {
 
   mqttClient.loop();
 
-  // Light controls the number of illuminated pixels
   float lux = lightSensor.readLux();
 
   if (lux >= BRIGHT_LUX) {
@@ -140,7 +133,6 @@ void loop() {
     litPixels = num_leds ;   // 72 LEDs
   }
 
-  // Trigger an ultrasonic measurement
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
 
@@ -148,13 +140,10 @@ void loop() {
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
 
-  // Timeout after 30 milliseconds
   unsigned long duration = pulseIn(echoPin, HIGH, 30000UL);
 
-  // Distance in centimetres
   float distance = duration * 0.0343f / 2.0f;
 
-  // Distance controls colour only
   const char* colour;
 
   if (duration == 0 || distance >= FAR_CM) {
@@ -190,7 +179,7 @@ void loop() {
   delay(200);
 }
 
-// Half mode uses a repeating 3-on, 3-off pattern.
+// Half mode 
 void send_colour_to_all(int r, int g, int b) {
   if (!mqttClient.connected()) {
     Serial.println(F("MQTT disconnected; cannot publish."));
