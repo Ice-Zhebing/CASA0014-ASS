@@ -28,3 +28,6 @@ Both responses can occur at the same time.
 - Voltage-dividing resistors
 - USB cable
 - Cardboard enclosure
+
+The following image shows a schematic diagram of the circuit connections.
+![Circuit assembly and wiring](image/wiring.jpg)
