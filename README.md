@@ -50,7 +50,7 @@ The following image shows a schematic diagram of the circuit connections.
 6. Open the Serial Monitor at **115200 baud** to view the light
    level, distance and lighting state.
 
-## Test Results
+## 6. Test Results
 The following photographs show the output displayed by the
 Luminaire Color Grid during testing.
 ![Red upper-half output](image/very_close_red.jpg)
@@ -60,3 +60,8 @@ Luminaire Color Grid during testing.
 ![Green upper-half output](image/far_green.jpg)
 
 ![Green full output](image/full_light.jpg)
+
+## 7. Learning outcomes
+During my undergraduate studies, I mainly focused on software and had very little prior experience with hardware or circuits. Connecting sensors, setting up circuits on a breadboard and checking the wiring were all entirely new practical experiences for me.
+
+I also gradually came to understand how the entire system works together: from circuit connections and sensor readings, to the conditional statements in the code, and finally to controlling remote lights via MQTT.
