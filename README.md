@@ -31,3 +31,32 @@ Both responses can occur at the same time.
 
 The following image shows a schematic diagram of the circuit connections.
 ![Circuit assembly and wiring](image/wiring.jpg)
+
+## 4. System Workflow
+1. The sensors measure ambient light and distance.
+2. The Arduino determines the LED count and colour.
+3. It publishes RGB data to the MQTT broker over Wi-Fi.
+4. The Vespera lighting installation receives the data and updates
+   its LEDs.
+
+## 5. Setup and Operation
+1. Assemble the circuit according to the wiring instructions.
+2. In the Arduino IDE, select **Arduino MKR WiFi 1010**.
+3. Install **WiFiNINA**, **PubSubClient** and **Adafruit VEML7700**,
+   together with their required dependencies.
+4. Create `arduino_secrets.h` and enter your own Wi-Fi and MQTT credentials.
+5. Open the **V2** sketch and check the light ID and MQTT topic
+   before uploading.
+6. Open the Serial Monitor at **115200 baud** to view the light
+   level, distance and lighting state.
+
+## Test Results
+The following photographs show the output displayed by the
+Luminaire Color Grid during testing.
+![Red upper-half output](image/very_clos_red.jpg)
+
+![Blue upper-half output](image/closer_blue.jpg)
+
+![Green upper-half output](image/far_green.jpg)
+
+![Green full output](image/full-light.jpg)
