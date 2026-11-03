@@ -29,19 +29,15 @@ const int num_leds = 72;
 const int payload_size = num_leds * 3;
 byte RGBpayload[payload_size];
 
-// Ultrasonic sensor pins
 const int trigPin = 2;
 const int echoPin = 3;
 
-// Distance thresholds
 
 const float NEAR_CM = 20.0f;
 const float FAR_CM = 60.0f;
 
-// Colour intensity: 0 to 255
 const byte COLOUR_LEVEL = 120;
 
-// All 72 LEDs are enabled
 int litPixels = num_leds;
 
 void setup() {
@@ -53,12 +49,11 @@ void setup() {
   WiFiDrv::pinMode(27, OUTPUT);
   LedRed();
 
-  // Ultrasonic sensor
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
   digitalWrite(trigPin, LOW);
 
-  // Unique MQTT client ID
+
   byte mac[6];
   WiFi.macAddress(mac);
 
@@ -90,7 +85,7 @@ void setup() {
 }
 
 void loop() {
-  // Restore WiFi when needed
+
   if (WiFi.status() != WL_CONNECTED) {
     startWifi();
 
@@ -111,7 +106,6 @@ void loop() {
 
   litPixels = num_leds;
 
-  // Trigger an ultrasonic measurement
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
 
@@ -123,7 +117,6 @@ void loop() {
 
   float distance = duration * 0.0343f / 2.0f;
 
-  // Distance controls colour only
   const char* colour;
 
   if (duration == 0 || distance >= FAR_CM) {
@@ -137,7 +130,7 @@ void loop() {
     colour = "RED";
   }
 
-  // Diagnostic output
+
   Serial.print(F("Distance: "));
   if (duration == 0) {
     Serial.print(F("No echo"));
@@ -156,7 +149,7 @@ void loop() {
   delay(200);
 }
 
-// Build and publish the RGB payload
+
 void send_colour_to_all(int r, int g, int b) {
   if (!mqttClient.connected()) {
     Serial.println(F("MQTT disconnected; cannot publish."));
@@ -186,7 +179,6 @@ void send_colour_to_all(int r, int g, int b) {
   }
 }
 
-// Switch every LED off
 void send_all_off() {
   send_colour_to_all(0, 0, 0);
 }
