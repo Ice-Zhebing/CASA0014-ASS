@@ -1,1 +1,8 @@
-Vespera is an indoor lighting project that uses two sensors to respond to its surroundings. An ultrasonic sensor measures how close someone is, changing the light from green to blue, then red as they approach. An ambient light sensor adjusts the number of LEDs: all 72 light up when the room is dim, while only 36 stay on in brighter conditions. Together, these sensors allow the lighting to respond to both the room and the people around it.
+# Minion Light Controller
+This is an Arduino-based physical lighting interaction prototype.
+It uses a light sensor and an ultrasonic distance sensor, together
+with Wi-Fi and MQTT, to control the Vespera lighting installation
+in the laboratory.
+
+**Final version: V2. Please use the code in [code/v2](code/v2).** 
+![Final Minion Light Controller prototype](images/prototype.jpg)
