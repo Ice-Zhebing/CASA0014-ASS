@@ -53,10 +53,10 @@ The following image shows a schematic diagram of the circuit connections.
 ## Test Results
 The following photographs show the output displayed by the
 Luminaire Color Grid during testing.
-![Red upper-half output](image/very_clos_red.jpg)
+![Red upper-half output](image/very_close_red.jpg)
 
 ![Blue upper-half output](image/closer_blue.jpg)
 
 ![Green upper-half output](image/far_green.jpg)
 
-![Green full output](image/full-light.jpg)
+![Green full output](image/full_light.jpg)
