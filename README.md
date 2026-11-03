@@ -17,3 +17,14 @@ The two sensors control different lighting attributes independently.
 Both responses can occur at the same time.
 ### Ambient Light Control
 ![Light control](image/Light_control.png)
+### Distance Control
+![Distance control](image/Distance_control.png)
+
+## 3. Key Components and Wiring
+- Arduino MKR WiFi 1010
+- VEML7700 light sensor
+- HC-SR04 ultrasonic distance sensor
+- Breadboard and jumper wires
+- Voltage-dividing resistors
+- USB cable
+- Cardboard enclosure
