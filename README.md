@@ -16,4 +16,4 @@ Building on this, I added an ultrasonic distance sensor, hoping that the light w
 The two sensors control different lighting attributes independently.
 Both responses can occur at the same time.
 ### Ambient Light Control
-![Light control](image/Light_control.jpg)
+![Light control](image/Light_control.png)
